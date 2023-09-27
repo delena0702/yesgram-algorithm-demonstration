@@ -279,11 +279,13 @@ class CanvasManager {
     solver
     ctx
     button
+    delay
 
     constructor(solver, canvas, button) {
         this.solver = solver;
         this.ctx = canvas.getContext('2d');
         this.button = button;
+        this.delay = 0;
 
         this.init();
     }
@@ -291,12 +293,19 @@ class CanvasManager {
     init() {
         const { solver, button } = this;
         solver.board.change_listener = this.change.bind(this);
-        button.addEventListener('click', this.run.bind(this));
+        button.onclick = this.run.bind(this);
         this.draw();
     }
 
     async run() {
-        const { solver } = this;
+        const { solver, delay } = this;
+
+        if (delay < 0) {
+            solver.board.board = this.data;
+            this.draw();
+            return;
+        }
+
         try {
             await solver.solve();
         }
@@ -445,11 +454,12 @@ class CanvasManager {
                 break;
 
             case 1:
-                ctx.fillStyle = `#888888`;
+                ctx.fillStyle = `#444444`;
                 ctx.fillRect(0, 0, size, size);
                 break;
 
             case 2:
+                ctx.strokeStyle = `#aaaaaa`;
                 ctx.beginPath();
                 ctx.moveTo(0 * size, 0 * size);
                 ctx.lineTo(1 * size, 1 * size);
@@ -488,11 +498,22 @@ class CanvasManager {
     }
 }
 
+var pre_manager;
+
 function init() {
+    const random_image = Array.from({ length: 30 }, () =>
+        Array.from({ length: 30 }, () => 
+            (Math.random() < 0.6 ? 1 : 2)
+        )
+    );
+
     const test_cases = [
         [image_data[0], 70, 'canvas-demonstration-1', 'button-demonstration-1'],
         [image_data[1], 70, 'canvas-demonstration-2', 'button-demonstration-2'],
         [image_data[2], 1, 'canvas-demonstration-4', 'button-demonstration-4'],
+        [random_image, 1, 'canvas-demonstration-5', 'button-demonstration-5'],
+        [[[2]], 10, 'canvas-demonstration-6', 'button-demonstration-6'],
+        [image_data[3], -1, 'canvas-demonstration-7', 'button-demonstration-7'],
     ];
 
     for (const [data, delay, canvas_id, button_id] of test_cases) {
@@ -503,20 +524,14 @@ function init() {
         solver.attach_hint(Solver.make_hint_from_array(data));
         
         const manager = new CanvasManager(solver, canvas, button);
+        manager.data = data;
         manager.delay = delay;
+        if (canvas_id == 'canvas-demonstration-6')
+            pre_manager = manager;
     }
 
     {
-        const hint = [
-            [
-                [2],
-                [1]
-            ],
-            [
-                [2],
-                [2]
-            ]
-        ];
+        const hint = [[[2], [1]], [[2], [2]]];
         const delay = 70;
         const canvas_id = 'canvas-demonstration-3';
         const button_id = 'button-demonstration-3';
@@ -529,10 +544,30 @@ function init() {
         const manager = new CanvasManager(solver, canvas, button);
         manager.delay = delay;
     }
+
+    document.getElementById('button-import').addEventListener('click', ()=>{
+        try {
+            const value = document.getElementById('input-text').value;
+            const data = JSON.parse(value);
+            const canvas_id = 'canvas-demonstration-6';
+            const button_id = 'button-demonstration-6';
+
+            const canvas = document.getElementById(canvas_id);
+            const button = document.getElementById(button_id);
+
+            const solver = new Solver(data[0].length, data.length);
+            solver.attach_hint(Solver.make_hint_from_array(data));
+
+            const manager = new CanvasManager(solver, canvas, button);
+            manager.delay = 10;
+
+            manager.draw();
+            delete pre_manager;
+            pre_manager = manager;
+        } catch (e) {
+            alert("잘못된 입력 데이터가 존재합니다.");
+        }
+    });
 }
 
 window.addEventListener('load', init);
-
-
-
-

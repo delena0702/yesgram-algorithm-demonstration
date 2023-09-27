@@ -42,7 +42,7 @@
         </section>
 
         <section class="my-5 row">
-            <h1 class="display-5">노노그램 퍼즐 풀이</h1>
+            <h1 class="display-5">- 노노그램 퍼즐 풀이</h1>
             <p class="lead fs-3">
                 초록색 라인 : 현재 푸는 중 <br>
                 노란색 라인 : 풀이 대기 중
@@ -59,9 +59,10 @@
                 </button>
             </div>
         </section>
+        <div style="height:300px;"></div>
 
         <section class="my-5 row">
-            <h1 class="display-5">해가 여러 개인 경우</h1>
+            <h1 class="display-5">- 해가 여러 개인 경우</h1>
             <div class="col-8 text-center d-flex justify-content-center align-items-center p-3">
                 <canvas id="canvas-demonstration-2" class="" width="700" height="700"></canvas>
             </div>
@@ -74,9 +75,10 @@
                 </button>
             </div>
         </section>
+        <div style="height:300px;"></div>
 
         <section class="my-5 row">
-            <h1 class="display-5">해가 없는 경우</h1>
+            <h1 class="display-5">- 해가 없는 경우</h1>
             <div class="col-8 text-center d-flex justify-content-center align-items-center p-3">
                 <canvas id="canvas-demonstration-3" class="" width="700" height="700"></canvas>
             </div>
@@ -89,14 +91,87 @@
                 </button>
             </div>
         </section>
+        <div style="height:300px;"></div>
 
         <section class="my-5 row">
-            <h1 class="display-5">Large Case</h1>
+            <h1 class="display-5">- Large Case</h1>
             <div class="col-8 text-center d-flex justify-content-center align-items-center p-3">
                 <canvas id="canvas-demonstration-4" class="" width="700" height="700"></canvas>
             </div>
             <div class="col-4 d-flex justify-content-center align-items-center">
                 <button id="button-demonstration-4" type="button" class="btn btn-dark p-3 fs-3">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="50" fill="currentColor" class="bi bi-play-fill" viewBox="0 0 16 16">
+                        <path d="m11.596 8.697-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393z"/>
+                    </svg>
+                    Run!
+                </button>
+            </div>
+        </section>
+        <div style="height:300px;"></div>
+
+        <section class="my-5 row">
+            <h1 class="display-5">- Random Cases ( 색칠 확률 60% )</h1>
+            <div class="col-8 text-center d-flex justify-content-center align-items-center p-3">
+                <canvas id="canvas-demonstration-5" class="" width="700" height="700"></canvas>
+            </div>
+            <div class="col-4 d-flex justify-content-center align-items-center">
+                <button id="button-demonstration-5" type="button" class="btn btn-dark p-3 fs-3">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="50" fill="currentColor" class="bi bi-play-fill" viewBox="0 0 16 16">
+                        <path d="m11.596 8.697-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393z"/>
+                    </svg>
+                    Run!
+                </button>
+            </div>
+        </section>
+        <div style="height:300px;"></div>
+
+        <section class="my-5">
+            <h1 class="display-5">- Try It!</h1>
+            <p class="lead fs-3">
+                1 : 색칠된 칸 <br>
+                2 : 색칠하지 않는 칸
+            </p>
+            <div class="row">
+                <div class="col-8 form-floating">
+                    <textarea class="form-control" placeholder="Leave a comment here" id="input-text" style="height: 300px">
+[
+    [2, 1, 2, 1, 2],
+    [1, 1, 1, 1, 1],
+    [2, 1, 1, 1, 2],
+    [2, 2, 1, 2, 2]
+]</textarea>
+                    <label for="input-text" class="ms-3">JSON Array</label>
+                </div>
+                
+                <div class="col-4 d-flex justify-content-center align-items-center">
+                    <button id="button-import" type="button" class="btn btn-dark p-3 fs-3">
+                        Import
+                    </button>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-8 text-center d-flex justify-content-center align-items-center p-3">
+                    <canvas id="canvas-demonstration-6" class="" width="700" height="700"></canvas>
+                </div>
+                <div class="col-4 d-flex justify-content-center align-items-center">
+                    <button id="button-demonstration-6" type="button" class="btn btn-dark p-3 fs-3">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="50" fill="currentColor" class="bi bi-play-fill" viewBox="0 0 16 16">
+                            <path d="m11.596 8.697-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393z"/>
+                        </svg>
+                        Run!
+                    </button>
+                </div>
+            </div>
+        </section>
+        <div style="height:300px;"></div>
+
+        <section class="my-5 row">
+            <h1 class="display-5">- ??? ( 멀리서 인식해야 잘 인식됩니다. )</h1>
+            <div class="col-8 text-center d-flex justify-content-center align-items-center p-3">
+                <canvas id="canvas-demonstration-7" class="" width="700" height="700"></canvas>
+            </div>
+            <div class="col-4 d-flex justify-content-center align-items-center">
+                <button id="button-demonstration-7" type="button" class="btn btn-dark p-3 fs-3">
                     <svg xmlns="http://www.w3.org/2000/svg" width="50" fill="currentColor" class="bi bi-play-fill" viewBox="0 0 16 16">
                         <path d="m11.596 8.697-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393z"/>
                     </svg>
