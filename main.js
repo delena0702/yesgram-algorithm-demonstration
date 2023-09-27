@@ -460,6 +460,8 @@ class CanvasManager {
 
             case 2:
                 ctx.strokeStyle = `#aaaaaa`;
+                ctx.lineWidth = 2;
+                
                 ctx.beginPath();
                 ctx.moveTo(0 * size, 0 * size);
                 ctx.lineTo(1 * size, 1 * size);
