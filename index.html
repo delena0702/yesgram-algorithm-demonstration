@@ -43,10 +43,16 @@
 
         <section class="my-5 row">
             <h1 class="display-5">- 노노그램 퍼즐 풀이</h1>
-            <p class="lead fs-3">
-                초록색 라인 : 현재 푸는 중 <br>
-                노란색 라인 : 풀이 대기 중
-            </p>
+            <div class="w-auto position-relative mt-2">
+                <div class="position-absolute start-0 end-0 bottom-0 bg-success-subtle overflow-visible w-auto z-n1 mb-2" style="height: 10px;"></div>
+                <p class="lead fs-3 text-nowrap mb-0">초록색 라인 : 현재 푸는 중</p>
+            </div>
+            <div></div>
+            <div class="w-auto position-relative mt-2">
+                <div class="position-absolute start-0 end-0 bottom-0 bg-warning-subtle overflow-visible w-auto z-n1 mb-2" style="height: 10px;"></div>
+                <p class="lead fs-3 text-nowrap mb-0">노란색 라인 : 풀이 대기 중</p>
+            </div>
+            <div></div>
             <div class="col-lg-8 text-center d-flex justify-content-center align-items-center p-3">
                 <canvas id="canvas-demonstration-1" class="" width="700" height="700"></canvas>
             </div>
